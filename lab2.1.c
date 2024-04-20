@@ -10,26 +10,33 @@
 */
 
 #include <stdio.h>
-#include <math.h>
-#define lmax  20
+#define lmax 20
 
 int main()
 {
     int n, m, k, A[lmax][lmax], B[lmax], l, i, j, flag, f, v, u, x;
-    do { 
+    do {
         puts("Введите длину и ширину матрицы и длину массива");
         x = scanf("%d %d %d", &n, &m, &k);
-        while (getchar() != '\n');
-    } while (x < 2 || n < 1 || m < 1 || k < 1 || n > lmax || m > lmax || k > lmax);
-    printf("Введите матрицу\n");
+        while (getchar() != '\n'); 
+    } while (x < 3 || n < 1 || m < 1 || k < 1 || n > lmax || m > lmax || k > lmax);
     for (i = 0; i < n; i++) {
         for (j = 0; j < m; j++) {
-            scanf("%d", &A[i][j]);
+            do {
+                printf("Введите %d элемент матрицы\n", i * n + j + 1);
+                x = scanf("%d", &u);
+                while (getchar() != '\n');
+            } while (x < 1);
+            A[i][j] = u;
         }
     }
-    printf("Введите массив\n");
     for (i = 0; i < k; i++) {
-        scanf("%d", &B[i]);
+        do {
+            printf("Введите %d элемент массива\n", i + 1);
+            x = scanf("%d", &u);
+            while (getchar() != '\n');
+        } while (x < 1);
+        B[i] = u;
     }
     printf("\n");
     for (j = 0; j < m; j++) {
@@ -48,7 +55,7 @@ int main()
                 }
             }
             while (v == 0 && l < k);
-        }
+    }
         if (u == n) {
             for (i = 0; i < n; i++) {
                 for (l = i; l < n; l++) {
